@@ -4,4 +4,4 @@ services:
 before_install:
   - docker build -t namvari/docker-react -f Dockerfile.dev .
 script:
-  - docker run namvari/docker-react npm run test -- --coverage
+  - docker run -e CI=true namvari/docker-react npm run test -- --coverage
