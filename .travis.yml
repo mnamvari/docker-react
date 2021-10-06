@@ -5,3 +5,14 @@ before_install:
   - docker build -t namvari/docker-react -f Dockerfile.dev .
 script:
   - docker run -e CI=true namvari/docker-react npm run test -- --coverage
+deploy:
+  provider: elasticbeanstalk
+  region: "us-west-2"
+  app: "docker-react"
+  env: "Docker-env"
+  bucket_name: "ashdahsdkakskahsdjk"
+  bucket_path: "docker-react"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "$AWS_SECRET_KEY"
